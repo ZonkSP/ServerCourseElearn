@@ -13,7 +13,6 @@ class Server {
         this.cursosPath= "/api/cursos";
         this.usersPath = "/api/users";
         this.enrollPath = "/api/enroll";
-        this.authPath = "/api/auth";
 
         this.middlewares();
         this.routes();
@@ -21,7 +20,6 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.authPath, require('../routes/auth'));
         this.app.use(this.cursosPath, require("../routes/cursos"));
         this.app.use(this.enrollPath, require('../routes/enroll'));
         this.app.use(this.usersPath, require("../routes/moduleUser"));
