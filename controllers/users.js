@@ -55,7 +55,8 @@ const loginUser = (req = request, res = response) => {
         if (result) {
             generateJWT(email).then((token) => {
                 res.status(200).json({
-                    token: token
+                    token: token,
+                    role: result.role
                 });
             }).catch((error) => {
                 res.status(500).json({

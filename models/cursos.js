@@ -10,12 +10,14 @@ const cursosSchema = mongoose.Schema({
     teacher: { type: mongoose.Schema.Types.ObjectId, ref: Usuarios }, // Referencia al ID del profesor
     tasks: [
         {
-            id: Number,
+            _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
             title: String,
             description: String,
             dueDate: String,
-            completedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: Usuarios }], // Referencia a los IDs de los estudiantes que completaron la tarea
-            // Otros campos relacionados con la tarea
+            completedBy: {
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: Usuarios }],
+                default: [] // Valor predeterminado como un array vacío
+            } // Referencia a los IDs de los estudiantes que completaron la tarea
         }
         // Otras tareas
     ]
